@@ -1,0 +1,18 @@
+CREATE TABLE Cuentas (
+  numero int not null,
+  saldo float not null,
+  dni varchar(20) not null,
+  tipo int not null,  //  CajaAhorro(1) o CuentaCorriente(2)
+  descubierto float not null,
+  intereses float not null,
+  activo bit default 1,
+  constraint fk_cuentas_clientes foreign key(dni) references Clientes,
+  constraint pk_cuentas primary key (numero)
+);
+
+CREATE TABLE Cliente (
+  dni varchar(20) not null,
+  nombre varchar(100),
+  activo bit default 1,
+  constraint pk_clientes primary key (dni)
+);
